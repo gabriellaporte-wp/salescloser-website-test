@@ -12,7 +12,6 @@ branch you're testing.
 
 | Feature | Ticket | Guide |
 |---|---|---|
-| Page Awareness — the agent reads the current page | HYB-20 | [HYB-20-page-awareness.md](HYB-20-page-awareness.md) |
 | Page Navigation — the agent moves the visitor between pages | HYB-21 | [HYB-21-page-navigation.md](HYB-21-page-navigation.md) |
 
 ---
