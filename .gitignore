@@ -1,0 +1,9 @@
+node_modules/
+package-lock.json
+
+# Portuguese-language testing guides (kept local, not published)
+*.pt-br.md
+GUIA-DE-TESTES.md
+
+# Scratch files
+Untitled

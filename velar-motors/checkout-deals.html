@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Checkout Deals — Velar Motors</title>
+<meta name="description" content="Public deals page — NOT the restricted checkout.">
+<link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+<header class="site">
+  <span class="brand">Velar Motors</span>
+  <a href="index.html">Home</a>
+  <a href="velar.html">Velar 2026</a>
+</header>
+<main>
+  <h1>Checkout Deals</h1>
+  <div class="scenario-note">BOUNDARY SCENARIO — the restricted path is
+    <code>/velar-motors/checkout</code>. This page is
+    <code>/velar-motors/checkout-deals.html</code> — it shares the text prefix
+    but is a <strong>different path segment</strong>, so it must <strong>NOT</strong>
+    be restricted. Page Awareness should work normally here (a
+    <code>POST /context</code> fires) and the agent should know this deal.
+    Proves <code>/checkout</code> doesn't accidentally block <code>/checkout-deals</code>.</div>
+  <p class="price">Trade-in bonus: $3,000 this month</p>
+  <p>Bring any vehicle for an instant appraisal. Public promotion, no login needed.</p>
+  <button>See trade-in offers</button>
+</main>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>

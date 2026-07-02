@@ -1,0 +1,21 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, sans-serif; margin: 0; color: #1a202c; line-height: 1.6; }
+header.site { background: #111827; color: #fff; padding: 0.75rem 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+header.site a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; }
+header.site a:hover { color: #fff; }
+header.site .brand { font-weight: 700; color: #fff; margin-right: 1rem; }
+main, .content { max-width: 880px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+h1 { font-size: 2rem; margin-bottom: 0.25rem; }
+.price { font-size: 1.75rem; font-weight: 700; color: #047857; }
+.muted { color: #64748b; font-size: 0.9rem; }
+button, .btn { background: #4f46e5; color: #fff; border: 0; border-radius: 8px; padding: 0.65rem 1.25rem; font-size: 1rem; cursor: pointer; margin: 0.25rem 0.5rem 0.25rem 0; display: inline-block; text-decoration: none; }
+button.secondary, .btn.secondary { background: #e2e8f0; color: #1e293b; }
+table { border-collapse: collapse; margin: 1rem 0; width: 100%; }
+td, th { border: 1px solid #e2e8f0; padding: 0.4rem 0.75rem; text-align: left; }
+form { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+form label { display: block; margin: 0.5rem 0 0.15rem; font-size: 0.85rem; color: #475569; }
+form input, form textarea, form select { width: 100%; max-width: 420px; padding: 0.45rem; border: 1px solid #cbd5e1; border-radius: 6px; }
+footer.site { background: #f1f5f9; color: #64748b; padding: 1.5rem; font-size: 0.85rem; margin-top: 3rem; }
+.scenario-note { background: #fef9c3; border: 1px solid #fde047; border-radius: 8px; padding: 0.6rem 1rem; font-size: 0.85rem; margin: 1rem 0; }
+nav.mega { background: #1f2937; padding: 0.5rem 1.5rem; }
+nav.mega a { color: #9ca3af; font-size: 0.8rem; margin-right: 0.75rem; text-decoration: none; }

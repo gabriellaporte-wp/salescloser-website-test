@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Luna Bistro — Modern Italian, Downtown</title>
+<meta name="description" content="Seasonal Italian kitchen. Dinner Tue–Sun, reservations recommended.">
+<link rel="stylesheet" href="../../shared/style.css">
+<!-- Restaurant JSON-LD: another real-world non-commerce type. facts stays
+     empty; priceRange/hours live only in structured_data + text. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Luna Bistro",
+  "servesCuisine": "Italian",
+  "priceRange": "$$",
+  "telephone": "+1-555-0144",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "88 Harbor St",
+    "addressLocality": "Portland",
+    "addressRegion": "OR"
+  },
+  "openingHours": "Tu-Su 17:00-23:00"
+}
+</script>
+</head>
+<body>
+<header class="site">
+  <span class="brand">Luna Bistro</span>
+  <a href="index.html">Menu</a>
+</header>
+<main>
+  <h1>Luna Bistro</h1>
+  <div class="scenario-note">RESTAURANT (<code>@type: Restaurant</code>) —
+    non-commerce type, expected <code>facts: {}</code>. The agent must answer
+    menu questions from <code>text</code> ("how much is the ossobuco?" → $34)
+    and hours/price-range from the raw <code>structured_data</code>.</div>
+
+  <p>Seasonal Italian cooking with Pacific Northwest produce. Dinner
+  Tuesday through Sunday, 5pm to 11pm. Walk-ins welcome at the bar;
+  dining room is reservation-first.</p>
+
+  <h2>Tonight's menu</h2>
+  <p>Burrata with charred peach and basil — $16. Squid-ink tagliolini,
+  Dungeness crab, calabrian chili — $28. Ossobuco alla milanese with
+  saffron risotto — $34. Tiramisu classico — $12.</p>
+
+  <h2>Wine</h2>
+  <p>Glasses from $11, bottles from $42. Corkage $25, waived with two
+  bottles from our list.</p>
+
+  <button data-sc-anchor="cta.reserve">Reserve a table</button>
+  <button>View full menu (PDF)</button>
+</main>
+<footer class="site">88 Harbor St, Portland OR · +1 555-0144</footer>
+<script src="../../config.js"></script>
+<script src="../../shared/embed.js"></script>
+</body>
+</html>

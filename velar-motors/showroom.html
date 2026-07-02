@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Velar Motors — Showroom</title>
+<meta name="description" content="Velar Motors showroom: one long page with several sections, for testing Simple Scroll.">
+<link rel="stylesheet" href="../shared/style.css">
+<style>
+  /* Tall sections so the page genuinely scrolls and each lands one at a time. */
+  main section { min-height: 78vh; padding: 2rem 0; border-top: 1px solid #eee; }
+  main section:first-of-type { border-top: 0; }
+  form label { display: block; margin: 0.75rem 0 0.25rem; }
+  form input, form textarea { width: 100%; max-width: 28rem; padding: 0.5rem; }
+</style>
+</head>
+<body>
+<header class="site">
+  <span class="brand">Velar Motors</span>
+  <a href="index.html">Home</a>
+  <a href="showroom.html">Showroom</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="financing.html">Financing</a>
+  <a href="contact.html">Contact</a>
+</header>
+
+<main>
+  <h1>Velar Motors Showroom</h1>
+  <p>Everything about the Range Rover Velar 2026 on one page — overview, pricing,
+     features, financing, a test drive, reviews, FAQs, and how to reach us. Ask
+     the assistant to take you to any of these and it will scroll you there.</p>
+
+  <section>
+    <h2>Overview</h2>
+    <p>The Velar 2026 is our flagship luxury SUV: three powertrains, a 60-day
+       delivery window, and a five-year warranty as standard. It seats five in
+       comfort and starts at $84,000 before options.</p>
+  </section>
+
+  <section>
+    <h2 data-sc-anchor="sec.pricing">Pricing &amp; Plans</h2>
+    <p>The Velar 2026 starts at <strong>$84,000</strong>. The S trim is $91,500
+       and the Autobiography is $108,000. Every price includes the first year of
+       scheduled maintenance.</p>
+    <ul>
+      <li>Velar 2026 — $84,000</li>
+      <li>Velar 2026 S — $91,500</li>
+      <li>Velar 2026 Autobiography — $108,000</li>
+    </ul>
+    <a class="btn" href="pricing.html">See the full price list</a>
+  </section>
+
+  <section>
+    <h2>Features &amp; Specs</h2>
+    <p>23-inch wheels, a 1,600-watt sound system, adaptive air suspension, and a
+       400-mile range on the electric powertrain. Towing capacity is 5,500 lbs.</p>
+  </section>
+
+  <section>
+    <h2>Financing Options</h2>
+    <p>Lease from $1,050/month for 36 months, or finance from 3.9% APR over 60
+       months. Trade-in credit is applied instantly toward your down payment.</p>
+  </section>
+
+  <section>
+    <h2>Book a Test Drive</h2>
+    <p>Try the Velar 2026 at our showroom or have us bring it to you. Pick a time
+       that works and one of our specialists will confirm.</p>
+    <button type="button" data-sc-anchor="btn.book_test_drive">Book a test drive</button>
+  </section>
+
+  <section>
+    <h2>Customer Reviews</h2>
+    <p>"The quietest cabin I've driven." — A. Medina. "Worth every dollar." —
+       J. Porter. Rated 4.9 out of 5 across 380 reviews.</p>
+  </section>
+
+  <section>
+    <h2>Frequently Asked Questions</h2>
+    <h3>How long is delivery?</h3>
+    <p>About 60 days for a build-to-order, or same week for in-stock trims.</p>
+    <h3>What does the warranty cover?</h3>
+    <p>Five years or 60,000 miles, bumper to bumper, including roadside assistance.</p>
+  </section>
+
+  <section>
+    <h2>Contact Us</h2>
+    <p>Questions about a trim, a price, or a trade-in? Send us a note and we'll
+       reply within one business day.</p>
+    <form onsubmit="event.preventDefault(); this.querySelector('p.sent').hidden = false;">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" autocomplete="name">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="3"></textarea>
+      <p><button type="submit">Send message</button></p>
+      <p class="sent" hidden>Thanks — we'll be in touch.</p>
+    </form>
+  </section>
+</main>
+
+<footer class="site">Velar Motors is a fictional dealership used for widget testing.</footer>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>

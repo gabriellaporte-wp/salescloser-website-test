@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>多言語テスト — Edge Lab</title>
+<meta name="description" content="長い日本語のページ。バイト単位の予算で切り詰められても価格は残ること。">
+<link rel="stylesheet" href="../shared/style.css">
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Product",
+  "name": "旅人のバックパック 45L",
+  "sku": "BAG-TAB-45",
+  "offers": { "@type": "Offer", "price": "24800", "priceCurrency": "JPY",
+              "availability": "https://schema.org/InStock" } }
+</script>
+<script>
+// ~8,000 characters of Japanese filler (≈24 KB as UTF-8) appended at load —
+// the multi-byte case that used to overflow the byte cap. The price sits at
+// the TOP of <main> so head-and-tail truncation must keep it.
+(function () {
+  const filler = document.createElement('p');
+  filler.textContent = ('これは長い説明文です。素材は防水ナイロンで、縫い目はすべてシームテープ処理されています。' +
+    '背面パネルは通気性の高いメッシュ構造で、長時間の移動でも快適です。').repeat(95);
+  document.addEventListener('DOMContentLoaded', () => document.getElementById('filler-slot').appendChild(filler));
+})();
+</script>
+</head>
+<body>
+<header class="site"><span class="brand">Edge Lab</span><a href="multi-jsonld.html">Multi JSON-LD</a></header>
+<main>
+  <h1>旅人のバックパック 45L</h1>
+  <div class="scenario-note">CJK / BYTE-BUDGET SCENARIO — ~8,000 Japanese chars
+    (~24 KB UTF-8). Expected: the POST returns 200 (never 413), the price
+    ¥24,800 survives near the head of <code>text</code>, and <code>facts</code>
+    has price 24800 JPY. Ask the agent in Japanese: 「このバックパックはいくらですか？」</div>
+  <p class="price">¥24,800（税込）— 在庫あり</p>
+  <p>45リットルの旅行用バックパック。機内持ち込み対応サイズです。</p>
+  <section id="filler-slot"></section>
+  <button>カートに入れる</button>
+</main>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>

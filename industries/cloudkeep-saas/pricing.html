@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pricing — CloudKeep Backup</title>
+<meta name="description" content="CloudKeep plans: Starter $29, Team $79, Business $199 per month.">
+<link rel="stylesheet" href="../../shared/style.css">
+<!-- SaaS pricing WITH JSON-LD, but @type SoftwareApplication is NOT a commerce
+     type for the extractor — facts stay empty (a documented, honest gap). The
+     raw block still ships in structured_data, and the table prices land in
+     text, so the agent can still answer. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CloudKeep Backup",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": [
+    { "@type": "Offer", "name": "Starter", "price": "29", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Team", "price": "79", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Business", "price": "199", "priceCurrency": "USD" }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site">
+  <span class="brand">CloudKeep</span>
+  <a href="pricing.html">Pricing</a>
+</header>
+<main>
+  <h1>Simple pricing that scales with you</h1>
+  <div class="scenario-note">SAAS, JSON-LD PRESENT BUT NON-COMMERCE TYPE
+    (<code>SoftwareApplication</code>) — expected: <code>facts: {}</code>
+    (type doesn't match Product/Offer/Vehicle/Service), but
+    <code>structured_data</code> carries the raw block with all three offers,
+    and the comparison table below is flattened into <code>text</code>.
+    Ask "what does the Team plan cost?" → $79/month.</div>
+
+  <p>All plans include unlimited restores, 30-day version history, and
+  AES-256 encryption at rest. Prices are per workspace, billed monthly;
+  pay annually and get two months free.</p>
+
+  <table>
+    <thead>
+      <tr><th>Plan</th><th>Price / month</th><th>Seats</th><th>Storage</th><th>Support</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Starter</td><td>$29</td><td>Up to 5</td><td>500 GB</td><td>Email</td></tr>
+      <tr><td>Team</td><td>$79</td><td>Up to 25</td><td>2 TB</td><td>Priority email</td></tr>
+      <tr><td>Business</td><td>$199</td><td>Unlimited</td><td>10 TB</td><td>Phone + dedicated CSM</td></tr>
+    </tbody>
+  </table>
+
+  <p>Nonprofits and open-source projects get 50% off any plan — contact
+  sales with proof of status.</p>
+
+  <button data-sc-anchor="cta.start_trial">Start 14-day free trial</button>
+  <button>Contact sales</button>
+</main>
+<footer class="site">CloudKeep Inc. · SOC 2 Type II · GDPR ready</footer>
+<script src="../../config.js"></script>
+<script src="../../shared/embed.js"></script>
+</body>
+</html>

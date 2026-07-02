@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Loader Inspector — SalesCloser Test Lab</title>
+<link rel="stylesheet" href="shared/style.css">
+<style>
+  .lab { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 1280px; margin: 1rem auto; padding: 0 1rem; }
+  .pane { border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+  .pane h2 { margin: 0; padding: 0.6rem 1rem; background: #111827; color: #fff; font-size: 0.95rem; }
+  iframe { width: 100%; height: 560px; border: 0; background: #fff; }
+  pre { margin: 0; padding: 1rem; background: #0f172a; color: #e2e8f0; font-size: 12px; line-height: 1.5; overflow: auto; height: 560px; }
+  .bar { max-width: 1280px; margin: 1rem auto 0; padding: 0 1rem; display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+  .bar select, .bar button { font-size: 0.9rem; padding: 0.4rem 0.6rem; }
+  .stat { font-size: 0.85rem; color: #475569; }
+  .ok { color: #047857; font-weight: 700; }
+  .warn { color: #b45309; font-weight: 700; }
+  .k { color: #7dd3fc; }
+</style>
+</head>
+<body>
+<header class="site">
+  <span class="brand">SalesCloser Test Lab</span>
+  <span class="stat">Loader Inspector — shows the EXACT snapshot the loader produces, no bot required.</span>
+</header>
+
+<div class="bar">
+  <label class="stat" for="page">Page under test:</label>
+  <select id="page">
+    <optgroup label="Velar Motors (happy path + privacy + SPA + mutation)">
+      <option value="velar-motors/velar.html">velar.html — Product JSON-LD, 3 anchor tiers</option>
+      <option value="velar-motors/pricing.html">pricing.html — text-only prices, no JSON-LD</option>
+      <option value="velar-motors/contact.html">contact.html — form + data-sc-private (privacy)</option>
+      <option value="velar-motors/checkout/index.html">checkout/ — restricted path (set in agent config)</option>
+      <option value="velar-motors/checkout-deals.html">checkout-deals — NEIGHBOUR, must NOT be restricted</option>
+      <option value="velar-motors/spa.html">spa.html — pushState navigation</option>
+      <option value="velar-motors/live.html">live.html — in-place mutation after 6s</option>
+    </optgroup>
+    <optgroup label="Industries (with/without JSON-LD per segment)">
+      <option value="industries/nimbus-marketing/index.html">marketing agency — NO JSON-LD (text only)</option>
+      <option value="industries/nimbus-marketing/services.html">marketing agency — @type:Service → facts ✓</option>
+      <option value="industries/cloudkeep-saas/pricing.html">saas pricing — SoftwareApplication → empty facts + table</option>
+      <option value="industries/luna-bistro/index.html">restaurant — @type:Restaurant → empty facts</option>
+      <option value="industries/harborlight-dental/index.html">dental clinic — NO JSON-LD + data-sc-private</option>
+    </optgroup>
+    <optgroup label="Edge Lab (JSON-LD + budget + hostile)">
+      <option value="edge-lab/multi-jsonld.html">multi-jsonld — Product is the 3rd script</option>
+      <option value="edge-lab/graph-mainentity.html">graph-mainentity — Product in @graph mainEntity</option>
+      <option value="edge-lab/malformed.html">malformed — broken 1st script, valid 2nd</option>
+      <option value="edge-lab/jsonld-variants.html">jsonld-variants — number price, offers array, priceSpec</option>
+      <option value="edge-lab/huge-jsonld.html">huge-jsonld — 60KB JSON-LD, envelope budget</option>
+      <option value="edge-lab/cjk.html">cjk — Japanese, byte-budget truncation</option>
+      <option value="edge-lab/injection.html">injection — hostile prompt + anchor</option>
+      <option value="edge-lab/body-rooted.html">body-rooted — nav chrome vs interactive cap</option>
+      <option value="edge-lab/framework-ids.html">framework-ids — random ids -> fingerprint</option>
+      <option value="edge-lab/repeated-cards.html">repeated-cards — selector targets the right card</option>
+      <option value="edge-lab/empty.html">empty — canvas only, degenerate</option>
+    </optgroup>
+  </select>
+  <button id="reload">Reload</button>
+  <button id="recapture">Re-extract</button>
+  <span id="status" class="stat"></span>
+</div>
+
+<div class="lab">
+  <div class="pane">
+    <h2>1 · The page (what a visitor sees)</h2>
+    <iframe id="frame" title="page under test"></iframe>
+  </div>
+  <div class="pane">
+    <h2>2 · The snapshot (what the bot receives) — <span id="bytes" class="stat"></span></h2>
+    <pre id="out">Select a page…</pre>
+  </div>
+</div>
+
+<script src="extract-standalone.js"></script>
+<script>
+const frame = document.getElementById('frame');
+const out = document.getElementById('out');
+const sel = document.getElementById('page');
+const status = document.getElementById('status');
+const bytes = document.getElementById('bytes');
+
+function colorize(json) {
+  return json
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/("(?:\\.|[^"\\])*")(\s*:)/g, '<span class="k">$1</span>$2');
+}
+
+function capture() {
+  const doc = frame.contentDocument;
+  if (!doc) { out.textContent = 'Frame not ready.'; return; }
+  let snap;
+  try {
+    snap = window.SCExtract.extractPageContext(frame.contentWindow, doc);
+  } catch (e) {
+    out.innerHTML = '<span class="warn">extractPageContext threw: ' + e.message + '</span>';
+    return;
+  }
+  if (!snap) { out.innerHTML = '<span class="warn">null — nothing worth sending (degenerate page)</span>'; bytes.textContent=''; return; }
+  const json = JSON.stringify(snap, null, 2);
+  const size = new TextEncoder().encode(JSON.stringify(snap)).length;
+  out.innerHTML = colorize(json);
+  const within = size <= 32768;
+  bytes.innerHTML = size + ' bytes ' + (within ? '<span class="ok">(≤ 32KB cap ✓)</span>' : '<span class="warn">(OVER 32KB — would 413!)</span>');
+}
+
+function load() {
+  status.textContent = 'loading…';
+  frame.src = sel.value + '?in_inspector=1';
+}
+frame.addEventListener('load', () => {
+  status.textContent = 'loaded — extracting';
+  // Give in-page scripts (mutation timers, JSON-LD builders) a tick.
+  setTimeout(() => { capture(); status.textContent = 'snapshot ready · use Re-extract after SPA nav / 6s mutation'; }, 400);
+});
+document.getElementById('reload').addEventListener('click', load);
+document.getElementById('recapture').addEventListener('click', capture);
+sel.addEventListener('change', load);
+load();
+</script>
+</body>
+</html>

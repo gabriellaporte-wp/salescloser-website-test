@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Malformed JSON-LD — Edge Lab</title>
+<meta name="description" content="The first JSON-LD script is broken; a valid Product follows.">
+<link rel="stylesheet" href="../shared/style.css">
+<!-- The FIRST script is invalid JSON (trailing comma + cut string). Nothing may
+     crash: structured_data must be null (first-script semantics), but facts must
+     still come from the SECOND, valid script. -->
+<script type="application/ld+json">
+{ "@type": "Product", "name": "Broken JSON, never parses",, "price": "1
+</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Product",
+  "name": "Trail Compass 60",
+  "sku": "CMP-060",
+  "offers": { "@type": "Offer", "price": "34.50", "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock" } }
+</script>
+</head>
+<body>
+<header class="site"><span class="brand">Edge Lab</span><a href="multi-jsonld.html">Multi JSON-LD</a></header>
+<main>
+  <h1>Trail Compass 60</h1>
+  <div class="scenario-note">MALFORMED-FIRST SCENARIO — script 1 is broken JSON.
+    Expected: no console error from extraction, <code>structured_data: null</code>,
+    and <code>facts</code> still filled from script 2 (price 34.50 USD).</div>
+  <p class="price">$34.50 — in stock</p>
+  <p>A liquid-filled baseplate compass with a luminous bezel.</p>
+  <button>Add to cart</button>
+</main>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>

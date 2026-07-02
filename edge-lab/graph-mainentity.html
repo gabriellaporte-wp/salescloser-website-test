@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Graph + mainEntity — Edge Lab</title>
+<meta name="description" content="Product nested inside a WebPage mainEntity within an @graph wrapper.">
+<link rel="stylesheet" href="../shared/style.css">
+<!-- Yoast-style: one script, @graph wrapper, the Product hidden inside
+     WebPage.mainEntity. facts must descend into it. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", "name": "Edge Lab Outfitters" },
+    { "@type": "WebPage",
+      "name": "Glacier Stove",
+      "mainEntity": {
+        "@type": "Product",
+        "name": "Glacier Backpacking Stove",
+        "sku": "STV-GLC-01",
+        "offers": { "@type": "Offer", "price": "89", "priceCurrency": "GBP",
+                    "availability": "https://schema.org/InStock" }
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site"><span class="brand">Edge Lab</span><a href="multi-jsonld.html">Multi JSON-LD</a></header>
+<main>
+  <h1>Glacier Backpacking Stove</h1>
+  <div class="scenario-note">GRAPH + MAINENTITY SCENARIO — the Product sits at
+    <code>@graph[1].mainEntity</code>. Expected: <code>facts</code> has
+    name "Glacier Backpacking Stove", sku STV-GLC-01, price 89 GBP, InStock.</div>
+  <p class="price">£89 — in stock</p>
+  <p>A 62-gram titanium stove that boils a litre in under three minutes.</p>
+  <button>Add to basket</button>
+</main>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>

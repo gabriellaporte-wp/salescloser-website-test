@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Multi JSON-LD — Edge Lab</title>
+<meta name="description" content="Organization and breadcrumbs come first; the Product is the third script.">
+<link rel="stylesheet" href="../shared/style.css">
+<!-- Shopify/WordPress-style layout: the Product is NOT the first ld+json script.
+     facts must still find it; structured_data (first script only, by design)
+     will hold the Organization. -->
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Organization",
+  "name": "Edge Lab Outfitters", "url": "https://edge-lab.example" }
+</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home" },
+    { "@type": "ListItem", "position": 2, "name": "Tents" } ] }
+</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Product",
+  "name": "Summit 4-Season Tent",
+  "sku": "TENT-SUM-4S",
+  "brand": "Edge Lab",
+  "offers": { "@type": "Offer", "price": "649.99", "priceCurrency": "EUR",
+              "availability": "https://schema.org/PreOrder" } }
+</script>
+</head>
+<body>
+<header class="site"><span class="brand">Edge Lab</span><a href="../velar-motors/index.html">Dealership site</a></header>
+<main>
+  <h1>Summit 4-Season Tent</h1>
+  <div class="scenario-note">MULTI-SCRIPT SCENARIO — the Product is the 3rd
+    ld+json script. Expected: <code>facts</code> has name/sku/price 649.99/EUR/PreOrder,
+    while <code>structured_data</code> holds the Organization (first script, by design).</div>
+  <p class="price">€649.99 — pre-order</p>
+  <p>Four-season expedition tent for two. Ships in March.</p>
+  <button>Pre-order now</button>
+</main>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>

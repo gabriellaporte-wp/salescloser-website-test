@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JSON-LD Variants — Edge Lab</title>
+<meta name="description" content="Price as a number, offers as an array, nested priceSpecification.">
+<link rel="stylesheet" href="../shared/style.css">
+<!-- Real sites format Offer in many shapes. All three below must yield facts. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Variant Stove",
+  "sku": "VAR-01",
+  "offers": [
+    {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "price": 199,
+      "priceSpecification": { "@type": "PriceSpecification", "price": "199.00", "priceCurrency": "USD" }
+    },
+    { "@type": "Offer", "price": 249, "priceCurrency": "USD" }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site"><span class="brand">Edge Lab</span><a href="multi-jsonld.html">Multi JSON-LD</a></header>
+<main>
+  <h1>Variant Stove</h1>
+  <div class="scenario-note">JSON-LD-VARIANT SCENARIO — price is a bare
+    <strong>number</strong> (199, no quotes), <code>offers</code> is an
+    <strong>array</strong>, and there's a nested <code>priceSpecification</code>.
+    Expected: <code>facts.price</code> = "199" (first offer, number coerced to
+    string), currency USD, availability InStock.</div>
+  <p class="price">$199 — in stock</p>
+  <p>A compact stove sold under two configurations.</p>
+  <button>Add to cart</button>
+</main>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>

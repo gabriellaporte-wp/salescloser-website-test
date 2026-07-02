@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Checkout — Velar Motors</title>
+<meta name="description" content="Velar Motors checkout.">
+<link rel="stylesheet" href="../../shared/style.css">
+</head>
+<body>
+<header class="site">
+  <span class="brand">Velar Motors</span>
+  <a href="../index.html">Home</a>
+  <a href="../velar.html">Velar 2026</a>
+</header>
+<main>
+  <h1>Checkout</h1>
+  <div class="scenario-note">RESTRICTED-PAGES SCENARIO — add
+    <code>/velar-motors/checkout</code> to the agent's restricted pages. With it set,
+    opening the widget here must produce <strong>no</strong>
+    <code>POST /context</code> in the Network tab, and the agent must know
+    nothing about this page. The marker below proves a leak if it ever shows up.</div>
+  <p>RESTRICTED-MARKER-CHECKOUT: order total $84,000, deposit $5,000 due today.</p>
+  <p><a href="payment.html">Continue to payment</a> (covered by the same prefix).</p>
+</main>
+<script src="../../config.js"></script>
+<script src="../../shared/embed.js"></script>
+</body>
+</html>

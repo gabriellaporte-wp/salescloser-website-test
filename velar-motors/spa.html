@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SPA Demo — Velar Motors</title>
+<meta name="description" content="Single-page-app navigation demo.">
+<link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+<header class="site">
+  <span class="brand">Velar Motors</span>
+  <a href="index.html">Home</a>
+  <a href="spa.html">SPA Demo</a>
+</header>
+<main>
+  <div class="scenario-note">SPA SCENARIO — the two buttons below swap the page
+    content via <code>history.pushState</code> with no reload. Ask the agent about
+    the price, switch product, then ask again: the answer must track the visible
+    product (a new <code>POST /context</code> fires before the second message).</div>
+  <p>
+    <button id="show-defender" class="secondary">Show Defender 110</button>
+    <button id="show-discovery" class="secondary">Show Discovery Sport</button>
+  </p>
+  <section id="product"></section>
+</main>
+<script>
+const PRODUCTS = {
+  defender: {
+    path: '/velar-motors/spa/defender',
+    html: '<h1>Defender 110 2026</h1><p class="price">From $62,500</p>' +
+          '<p>The Defender 110 seats seven and wades through 35 inches of water. ' +
+          'Delivery in 30 days.</p><button>Reserve a Defender</button>',
+  },
+  discovery: {
+    path: '/velar-motors/spa/discovery',
+    html: '<h1>Discovery Sport 2026</h1><p class="price">From $49,900</p>' +
+          '<p>The Discovery Sport is our compact seven-seater. ' +
+          'Delivery in 14 days.</p><button>Reserve a Discovery</button>',
+  },
+};
+function show(key) {
+  document.getElementById('product').innerHTML = PRODUCTS[key].html;
+  document.title = document.getElementById('product').querySelector('h1').textContent + ' — Velar Motors';
+  history.pushState({}, '', PRODUCTS[key].path);
+}
+document.getElementById('show-defender').addEventListener('click', () => show('defender'));
+document.getElementById('show-discovery').addEventListener('click', () => show('discovery'));
+show('defender');
+</script>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Huge JSON-LD — Edge Lab</title>
+<meta name="description" content="A 60KB JSON-LD block that must be shed from the envelope while facts survive.">
+<link rel="stylesheet" href="../shared/style.css">
+<script>
+// Build a legitimate but enormous Product JSON-LD (~60 KB of reviews) before
+// the loader ever runs. Inline 60 KB in the repo would be noise; the DOM the
+// loader sees is identical.
+(function () {
+  const reviews = [];
+  for (let i = 0; i < 400; i++) {
+    reviews.push({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: 'Reviewer Number ' + i },
+      reviewBody: 'Padding review number ' + i + ' — long enough to make this block enormous. '.repeat(2),
+      reviewRating: { '@type': 'Rating', ratingValue: (i % 5) + 1 },
+    });
+  }
+  const ld = document.createElement('script');
+  ld.type = 'application/ld+json';
+  ld.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Expedition Duffel 120L',
+    sku: 'DUF-EXP-120',
+    offers: { '@type': 'Offer', price: '189', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+    review: reviews,
+  });
+  document.head.appendChild(ld);
+})();
+</script>
+</head>
+<body>
+<header class="site"><span class="brand">Edge Lab</span><a href="multi-jsonld.html">Multi JSON-LD</a></header>
+<main>
+  <h1>Expedition Duffel 120L</h1>
+  <div class="scenario-note">ENVELOPE-BUDGET SCENARIO — the page carries ~60 KB
+    of JSON-LD, over the 28 KB snapshot budget. Expected in the POST payload:
+    <code>structured_data: null</code> (shed first), <code>facts</code> intact
+    (price 189 USD), <code>text</code> intact, and the request returns 200 —
+    never a 413. Before this fix the whole snapshot was silently lost here.</div>
+  <p class="price">$189 — in stock</p>
+  <p>A 120-litre expedition duffel with a waterproof base. Loved by 400 fictional reviewers.</p>
+  <button>Add to cart</button>
+</main>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>

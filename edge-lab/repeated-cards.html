@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Repeated Cards — Edge Lab</title>
+<meta name="description" content="Identical card structures; each CTA selector must point at its own card.">
+<link rel="stylesheet" href="../shared/style.css">
+<style>.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.card{border:1px solid #e2e8f0;border-radius:8px;padding:1rem}</style>
+</head>
+<body>
+<header class="site"><span class="brand">Edge Lab</span><a href="multi-jsonld.html">Multi JSON-LD</a></header>
+<main>
+  <h1>Tents</h1>
+  <div class="scenario-note">REPEATED-STRUCTURE SCENARIO — three cards with
+    identical HTML shape and no ids. A naive 4-segment structural selector would
+    point all three at the <em>first</em> card. The fix verifies each selector
+    resolves back to its own element, so the "Buy Trail B" button's selector must
+    target the <strong>second</strong> card, not the first.</div>
+  <div class="grid">
+    <div class="card"><h3>Trail A</h3><p class="price">$120</p><button>Buy Trail A</button></div>
+    <div class="card"><h3>Trail B</h3><p class="price">$140</p><button>Buy Trail B</button></div>
+    <div class="card"><h3>Trail C</h3><p class="price">$160</p><button>Buy Trail C</button></div>
+  </div>
+</main>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>

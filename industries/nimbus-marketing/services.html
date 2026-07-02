@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Services &amp; Pricing — Nimbus Growth</title>
+<meta name="description" content="Growth retainer pricing for the Nimbus demand-gen program.">
+<link rel="stylesheet" href="../../shared/style.css">
+<!-- Same agency, WITH JSON-LD: schema.org Service IS a commerce type for the
+     extractor (Product|Offer|Vehicle|Service), so facts must populate. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Growth Retainer — Full Funnel",
+  "provider": { "@type": "Organization", "name": "Nimbus Growth" },
+  "areaServed": "US",
+  "offers": {
+    "@type": "Offer",
+    "price": "2500",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "57" }
+}
+</script>
+</head>
+<body>
+<header class="site">
+  <span class="brand">Nimbus Growth</span>
+  <a href="index.html">Home</a>
+  <a href="services.html">Services &amp; Pricing</a>
+</header>
+<main>
+  <h1>Growth retainers</h1>
+  <div class="scenario-note">MARKETING AGENCY, WITH JSON-LD (<code>@type: Service</code>) —
+    Service matches the extractor's commerce types. Expected:
+    <code>facts.name</code> = "Growth Retainer — Full Funnel",
+    <code>facts.price</code> = "2500", currency USD, rating 4.9.
+    Compare with <code>index.html</code> (same business, no markup → facts empty).</div>
+
+  <p>Every retainer includes a dedicated strategist, a media buyer, and a
+  CRO designer. Starting at <strong>$2,500/month</strong>, single channel.</p>
+
+  <h2>What's included</h2>
+  <p>Weekly experiment reviews, quarterly strategy resets, Slack access to
+  the team, and a live attribution dashboard. Cancel with 30 days notice
+  after the initial 90-day term.</p>
+
+  <button data-sc-anchor="cta.start_retainer">Start a retainer</button>
+  <button>Talk to a strategist</button>
+</main>
+<footer class="site">Nimbus Growth LLC · Austin, TX</footer>
+<script src="../../config.js"></script>
+<script src="../../shared/embed.js"></script>
+</body>
+</html>

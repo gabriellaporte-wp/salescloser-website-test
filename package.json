@@ -1,0 +1,17 @@
+{
+  "name": "salescloser-website-test",
+  "version": "1.0.0",
+  "description": "Page Awareness test lab — fake customer sites + JSON inspector + headless validation.",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "http-server . -p 9000 -c-1 -o /inspector.html",
+    "serve": "http-server . -p 9000 -c-1",
+    "check": "node validate.js",
+    "build": "node build-inspector.js"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "jsdom": "^24.1.3"
+  }
+}

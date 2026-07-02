@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>http://localhost:9000/velar-motors/index.html</loc></url>
+  <url><loc>http://localhost:9000/velar-motors/velar.html</loc></url>
+  <url><loc>http://localhost:9000/velar-motors/pricing.html</loc></url>
+  <url><loc>http://localhost:9000/velar-motors/financing.html</loc></url>
+  <url><loc>http://localhost:9000/velar-motors/test-drive.html</loc></url>
+  <url><loc>http://localhost:9000/velar-motors/service.html</loc></url>
+  <url><loc>http://localhost:9000/velar-motors/trade-in.html</loc></url>
+  <url><loc>http://localhost:9000/velar-motors/warranty.html</loc></url>
+  <url><loc>http://localhost:9000/velar-motors/about.html</loc></url>
+  <url><loc>http://localhost:9000/velar-motors/contact.html</loc></url>
+</urlset>

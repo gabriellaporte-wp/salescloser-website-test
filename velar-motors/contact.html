@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Contact — Velar Motors</title>
+<meta name="description" content="Contact Velar Motors.">
+<link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+<header class="site">
+  <span class="brand">Velar Motors</span>
+  <a href="index.html">Home</a>
+  <a href="velar.html">Velar 2026</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="financing.html">Financing</a>
+  <a href="test-drive.html">Test Drive</a>
+  <a href="service.html">Service</a>
+  <a href="trade-in.html">Trade-In</a>
+  <a href="warranty.html">Warranty</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</header>
+<main>
+  <h1>Contact us</h1>
+  <p>Call the showroom at (000) 555-0142 or use the form below.</p>
+
+  <!-- PRIVACY SCENARIO 1: pre-filled form values must NEVER appear in the
+       snapshot text, facts, or interactive labels. -->
+  <form>
+    <label for="name">Full name</label>
+    <input id="name" type="text" value="SECRET-NAME-DO-NOT-CAPTURE">
+    <label for="email">Email</label>
+    <input id="email" type="email" value="secret.email@do-not-capture.example">
+    <label for="card">Card number (fake)</label>
+    <input id="card" type="text" value="4111-SECRET-1111">
+    <label for="notes">Notes</label>
+    <textarea id="notes">SECRET-NOTES-DO-NOT-CAPTURE</textarea>
+    <button type="submit">Send message</button>
+  </form>
+
+  <!-- PRIVACY SCENARIO 2: explicit opt-out block. Nothing inside may leak. -->
+  <section data-sc-private>
+    <h2>Internal desk notes</h2>
+    <p>SECRET-PRIVATE-BLOCK: customer Jane Fictional owes $9,999. Do not share.</p>
+    <button>Open private CRM</button>
+  </section>
+
+  <p>Our showroom is at 100 Fictional Drive, Testville. Open Monday to Saturday.</p>
+</main>
+<footer class="site">Velar Motors is a fictional dealership used for widget testing.</footer>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>

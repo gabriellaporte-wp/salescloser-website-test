@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Framework IDs — Edge Lab</title>
+<meta name="description" content="Buttons with framework-generated ids must not become brittle #id selectors.">
+<link rel="stylesheet" href="../shared/style.css">
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Product",
+  "name": "Cloud Hosting Plan", "offers": { "@type": "Offer", "price": "12", "priceCurrency": "USD" } }
+</script>
+</head>
+<body>
+<header class="site"><span class="brand">Edge Lab</span><a href="multi-jsonld.html">Multi JSON-LD</a></header>
+<main>
+  <h1>Cloud Hosting Plan</h1>
+  <div class="scenario-note">FRAMEWORK-ID SCENARIO — modern SPAs generate random
+    ids that change on every render. The loader must <strong>reject</strong> those
+    (so the selector doesn't break next render) and fall back to a fingerprint,
+    while keeping a genuinely stable id.<br>
+    Expected: the buttons with hex-style ids below are
+    <code>stability: "low"</code> and their <code>selector</code> is NOT
+    <code>#...</code>; the human-readable id <code>#start-trial</code> stays
+    <code>"high"</code>.<br>
+    <strong>Known gap (documented):</strong> the prefix+dash form
+    <code>id="ember-1a2b3c4d"</code> currently slips through as "high" — the
+    last button shows it.</div>
+
+  <!-- Detected as framework ids -> rejected -> fingerprint (low) -->
+  <button id="el9f3a2b1c">Random hex id A</button>
+  <button id="x8f3a2b1c9d4">Random hex id B</button>
+  <button id="a1b2c3d4e5">Random hex id C</button>
+
+  <!-- Genuinely stable -> kept as #start-trial (high) -->
+  <button id="start-trial">Start free trial</button>
+
+  <!-- The documented gap: prefix + dash + hex slips through as "high" -->
+  <button id="ember-1a2b3c4d">Ember-style id (gap)</button>
+</main>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>

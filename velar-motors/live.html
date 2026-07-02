@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Live Price — Velar Motors</title>
+<meta name="description" content="Dynamic content mutation demo.">
+<link rel="stylesheet" href="../shared/style.css">
+</head>
+<body>
+<header class="site">
+  <span class="brand">Velar Motors</span>
+  <a href="index.html">Home</a>
+  <a href="live.html">Live Price</a>
+</header>
+<main>
+  <div class="scenario-note">MUTATION SCENARIO — 6 seconds after load, the flash
+    sale below rewrites its visible text in place (no navigation). The
+    MutationObserver re-captures; ask about the price <em>after</em> the change
+    and the agent must quote the NEW price ($79,500, code FLASH-79).</div>
+  <h1>Flash sale</h1>
+  <section id="deal">
+    <p class="price">Velar 2026 today: $84,000</p>
+    <p>Standard price, no promotion active right now.</p>
+  </section>
+  <button>Claim this deal</button>
+</main>
+<script>
+setTimeout(() => {
+  document.getElementById('deal').innerHTML =
+    '<p class="price">Velar 2026 today: $79,500</p>' +
+    '<p>Flash sale active for the next hour — use code FLASH-79 at the desk.</p>';
+}, 6000);
+</script>
+<script src="../config.js"></script>
+<script src="../shared/embed.js"></script>
+</body>
+</html>
