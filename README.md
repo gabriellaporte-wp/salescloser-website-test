@@ -27,7 +27,7 @@ runtime is needed — the lab is static HTML served over http.
 **Get the code and install deps:**
 
 ```bash
-git clone git@github-sc:gabriellaporte-wp/salescloser-website-test.git
+git clone git@github.com:gabriellaporte-wp/salescloser-website-test.git
 cd salescloser-website-test
 npm install
 ```
@@ -35,22 +35,16 @@ npm install
 Then:
 
 1. **Configure** — edit `config.js`:
-   - `dashboardUrl` — your worktree URL (default `http://localhost:8003`).
-   - `agentUuid` — a **hybrid or live-chat** agent UUID. Dev DB has agent #264
-     `amedina` → `0e4d4497-2019-41b8-8337-5bfbe533c998` (already filled in).
+   - `dashboardUrl` — your worktree/Coltrane dashboard URL
+   - `agentUuid` — a **hybrid or live-chat** agent UUID. You can find it, for example, when you click the SHARE button on the Agent modal and it shows the widget to copy and there will be a line like ` data-agent-uuid="xxxxxx-xxxxxx...."`, make sure to copy it only the letters in the middle of the quotes
 2. **Enable Page Awareness on the agent** — in the dashboard, open that agent's
    **Test Widget → Edit Appearance** bar, turn **Page Awareness ON**, and add a
    restricted path: `/velar-motors/checkout`.
-3. **Serve the lab** over http (the inspector reads an iframe's document, which
-   the browser blocks under `file://`). From this folder:
+3. **Serve the lab** over http. From this folder:
    ```bash
    npm install   # once
    npm start     # serves http://localhost:9000 and opens the inspector
    ```
-   (`npm start` uses `http-server`; any static server works. `npm run serve`
-   serves without auto-opening.)
-4. **Bot** — for the *live agent* tests (not the Inspector), your bot must be
-   running the **HYB-20 branch**. The Inspector works without it.
 
 > The dashboard's own Test Widget preview can't be used for this — it loads the
 > customer site in a cross-origin iframe the loader can't read. That's the whole
