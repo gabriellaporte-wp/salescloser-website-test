@@ -1,4 +1,4 @@
-# Page Navigation (HYB-21) — test guide
+# HYB-21 — Page Navigation — test guide
 
 A step-by-step walkthrough that assumes no prior context. It uses the same Velar
 Motors fake site as the Page Awareness lab: every page embeds the real floating
