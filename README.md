@@ -21,6 +21,19 @@ see is exactly what production sends. Regenerate it with `node build-inspector.j
 
 ## Setup (2 minutes)
 
+**Prerequisites:** [Node.js](https://nodejs.org) 18+ (ships with `npm`). No other
+runtime is needed — the lab is static HTML served over http.
+
+**Get the code and install deps:**
+
+```bash
+git clone git@github-sc:gabriellaporte-wp/salescloser-website-test.git
+cd salescloser-website-test
+npm install
+```
+
+Then:
+
 1. **Configure** — edit `config.js`:
    - `dashboardUrl` — your worktree URL (default `http://localhost:8003`).
    - `agentUuid` — a **hybrid or live-chat** agent UUID. Dev DB has agent #264
